@@ -6,6 +6,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 26000;
 describe('crawling comment test 10', () => {
   it('crawling comments 10', async () => {
     const result = await crawling('QIccuFGe-mc');
+    console.log(result);
     expect(result.videoId).toEqual('QIccuFGe-mc');
   });
 });

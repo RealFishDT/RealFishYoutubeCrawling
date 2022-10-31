@@ -34,24 +34,6 @@ export interface VideoTrendFeedInfo {
 
 export type VideoTrendFeedInfos = VideoTrendFeedInfo[];
 
-export enum CrawlingErrorCode {
-  Normal,
-  PlayerResponse,
-  InitalData,
-  InitalContinueData,
-  Unknown,
-}
-
-export class CrawlingError extends Error {
-  code: CrawlingErrorCode;
-  name = '';
-  constructor(code: CrawlingErrorCode, message?: string) {
-    super(message);
-    this.code = code;
-    this.name = this.constructor.name;
-  }
-}
-
 export type VideoCrawlingInfo = VideoCrawlingInfoPlayer &
   VideoCrawlingInfoInit &
   VideoCrawlingInfoComment;

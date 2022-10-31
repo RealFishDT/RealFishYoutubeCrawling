@@ -1,159 +1,112 @@
-# Sandbox Youtube Comment Crawling
-![alt text](https://raw.githubusercontent.com/jisueo/sycl-sample/master/sd_min.png) Youtube video comment crawling module just crawling web page (SYC)
+# RealFish Youtube Crawling
 
-* **pure crawling youtube video site and public api**
-* **this module do not use headless browser, just use ajax.**
-* **this module can extract comment from youtube video website**
-* **this module do not use youtube/google api, don't worry google api quota**
-* unlimited comment crawling comment
+Real Fish Youtube Crawling
 
-* 0.2.0 version update include
-    - result data type change [[aaaa], [bbbb], [ccc]] -> [aaaa,bbbb,ccc]
-    - support yield, next functions
-    - support new youtube method(endpoint) `youtubei/v1/next`
+- **pure crawling youtube video site and public api**
+- **this module do not use youtube/google api, don't worry google api quota**
 
-**Sample Code**
--
+## **Install**
 
-- [Sample nodejs code](https://github.com/jisueo/sycl-sample)
-
-**Install**
--
 ```
-npm install sandbox-youtube-comments
+npm install ryc"
 ```
-- this module name is **SYC**
 
-**Support features:**
--
+## **Support features:**
 
-- Get comments from youtube video web site
-- this SYC don't use headless browser and selector library like cheerio or scrapy, just use ajax, so fast and light
-    - <s>use public youtube API: https://www.youtube.com/comment_service_ajax</s>
-    - youtube change method(end point), they use `https://www.youtube.com/youtubei/v1/next` now
-    - `comment_service_ajax` not work any more
-    
+- Get views, likes from youtube video web site
+- this RYC don't use headless browser and selector library like cheerio or scrapy, just use ajax, so fast and light
 - this works on nodejs and electron
-    - unfortunately, not support common modern browser because CORS or SOP error
+  - unfortunately, not support common modern browser because CORS or SOP error
 - Typescript support
+- async/await support
 
-**Dependency:**
--
+## **Dependency:**
+
 - axios
-- form-data
 
-**SYC APIS**
--
-* Tyscript
+## **RYC APIS**
 
-    **comment crawling** : return all comments
-    - if you want 20 comment
-        ```ts
-        import {crawling, crawlingCallback} from 'sandbox-youtube-comments';
-        const result = await crawling('QIccu1Ge-mc', 20);
-        ```
-    - crawling(videoid: string, limit: number)
-        - videoID: Youtube video id
-        - limit: how many comment
+- Tyscript
 
-    **comment crawling itorator**: when each comments obtain from youtube api, return async yield type 
-    - if you want 200 comment
-        ```ts
-        import {crawlingIterator} from 'sandbox-youtube-comments';
+  **youtube video crawling** : return information videos
 
-        const itor = await crawlingIterator('UcfvY9v6QmQ', 200);
-        let d = false;
-        let length = 0;
-        while (!d) {
-            const {value, done} = await itor.next();
-            length += value ? value.length : 0;
-            d = done;
-        }
-        ```
-    - crawlingIterator(videoid: string, limit: number)
-        - videoID: Youtube video id
-        - limit: how many comment
-        - return itorator function
-     
-    **comment crawling callback**: when each comments obtain from youtube api, callback is called. commonly 20 comments are obtained at once  
-    - if you want 200 comment, callback is called 10 times approximately 
-        ```ts
-        import {crawlingCallback} from 'sandbox-youtube-comments';
-        crawlingCallback('QIccu1Ge-mc', 1, (arr, end) => {
-        });
-        ```
-    - crawlingCallback(videoid: string, limit: number, callback: (results, end))
-        - videoID: Youtube video id
-        - limit: how many comment
-        - callback
-            - results: comments
-            - end: is end or not
-            
-* SYC Funcitons(Nodejs)
-    **comment crawling** : return all comments
-    ```js
-    const syc = require('sandbox-youtube-comments');
+  ```ts
+  import {crawling} from 'ryc';
+  const result = await crawling('QIccu1Ge-mc');
+  ```
 
-    async function test() {
-        const result = await syc.crawling('ONpwVdyngpY', 30);
-        console.log(result);    
+- Javascript
+
+  ```js
+  const A = require('ryc');
+  const test = () => {
+    A.crawling_('wnlh9yoxBek').then(h => {
+      console.log(h);
+    });
+  };
+  test();
+  ```
+
+  **youtube video crawling** : return information videos
+
+  ```js
+  import {crawling} from 'ryc';
+  const result = await crawling('QIccu1Ge-mc');
+  ```
+
+  - crawling(videoid: string)
+    - videoID: Youtube video id
+
+- Output
+
+  - output data is json
+    ```
+    {
+    videoId: 'QIccuFGe-mc',
+    category: 'Comedy',
+    title: 'this is title',
+    views: 87572,
+    publishDate: '2018-10-12',
+    uploadDate: '2018-10-12',
+    ownerChannelName: 'Real Fish Viewer',
+    channelId: 'UCe323-y0YdvVSCwX3QbQb-A',
+    ad: undefined,
+    duration: 131448,
+    paidOverlay: false,
+    likes: 277,
+    tags: [],
+    rank: undefined,
+    superText: '#인기급상승동영상'
     }
     ```
 
-    **comment crawling** : callback
-    ```js
-    const syc = require('sandbox-youtube-comments');
+- properties
+  - videoId: youtube video id
+  - category: video category
+  - title: video title
+  - views: video current views count
+  - publishDate: video published at
+  - uploadDate: video upload at
+  - ownerChannelName: this video owner channel name
+  - channelId: this video owner channel id
+  - ad: this video have ad
+  - duration: this video duration, second
+  - paidOverlay: this video have paidOverlay
+  - likes: video likes count
+  - tags: video tag, like "game", "mine craft"
+  - rank: if video is in on trend(인급동), this propety show rank
+  - superText: video supertext, this supert text show, videos category and features is written by author
 
-    async function test() {
-        const result = await syc.crawlingCallback('ONpwVdyngpY', 30, (arr, end) => {
-                console.log(arr);   
-        });
-         
-    }
-    ```
+**RYC LICENSE**
 
-    **comment crawling** : yield
-    ```js
-    const syc = require('sandbox-youtube-comments');
-    async function test() {
-        const itor = await syc.crawlingIterator('ONpwVdyngpY', 30);
-        let d = false;
-        let length = 0;
-        while (!d) {
-            const {value, done} = await itor.next();
-            length += value ? value.length : 0;
-            d = done;
-        }
-        console.log(result);    
-    }
+- Real Fish ISC
 
-* Output
-    - output data is string[], 
-    - if comment have line feed or carriage return, originally youtube present like ['ABCD', '\n', 'EFGH]
-    - SYC module merge this things, ['ABCD\nEFGH']
-
-    - example 7 comments
-    ```
-    [
-        'Sandbox network ct dev team',
-        'WOW!!!',
-        'Que clipe',
-        'wow....wonderfull',
-        'We are literally strong.'
-        'Popular opinion'
-    ]
-    ```
-
-- If comment have '\r\n' or '\n' -> 'Sandbox network ct dev team \nleader jisueo',
-   
-**SYC LICENSE**
-- SANDBOX NETWORK ISC
 ```
-Copyright (c) 2021 year, Sandboxnetwork Inc CT-DEV
+Copyright (c) 2021 year, Real Fish Inc CT-DEV
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
 THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
 
-made by sandboxnetwork jisueo
+made by realfish

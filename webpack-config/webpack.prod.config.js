@@ -5,7 +5,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new DtsBundleWebpack({
-      name: 'bundle',
+      name: 'ryc',
       main: 'dist/debug/src/main.d.ts',
       out: '../../prod/bundle.d.ts',
       outputAsModuleFolder: true,

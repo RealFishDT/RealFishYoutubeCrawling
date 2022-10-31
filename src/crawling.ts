@@ -1,9 +1,22 @@
 import axios from 'axios';
 import * as Types from './types';
 
-export interface iVCont {
-  count: number;
-  thumnail: string;
+export enum CrawlingErrorCode {
+  Normal,
+  PlayerResponse,
+  InitalData,
+  InitalContinueData,
+  Unknown,
+}
+
+export class CrawlingError extends Error {
+  code: CrawlingErrorCode;
+  name = '';
+  constructor(code: CrawlingErrorCode, message?: string) {
+    super(message);
+    this.code = code;
+    this.name = this.constructor.name;
+  }
 }
 
 export class VideoCrawler {
@@ -94,7 +107,7 @@ export class VideoCrawler {
         clickTrackingParams: continuations_endpoint.clickTrackingParams,
       };
     } catch (e) {
-      throw new Types.CrawlingError(Types.CrawlingErrorCode.InitalContinueData);
+      throw new CrawlingError(CrawlingErrorCode.InitalContinueData);
     }
   }
 
@@ -193,7 +206,7 @@ export class VideoCrawler {
       };
     } catch (e) {
       console.log(e);
-      throw new Types.CrawlingError(Types.CrawlingErrorCode.InitalData);
+      throw new CrawlingError(CrawlingErrorCode.InitalData);
     }
   }
 
