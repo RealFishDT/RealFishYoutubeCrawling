@@ -8,7 +8,7 @@ Real Fish Youtube Crawling
 ## **Install**
 
 ```
-npm install ryc"
+npm install ryc
 ```
 
 ## **Support features:**
@@ -31,14 +31,14 @@ npm install ryc"
   **youtube video crawling** : return information videos
 
   ```ts
-  import {crawling} from 'ryc';
+  import {crawling} from 'realfish-yc';
   const result = await crawling('QIccu1Ge-mc');
   ```
 
 - Javascript
 
   ```js
-  const A = require('ryc');
+  const A = require('realfish-yc');
   const test = () => {
     A.crawling_('wnlh9yoxBek').then(h => {
       console.log(h);
@@ -49,11 +49,6 @@ npm install ryc"
 
   **youtube video crawling** : return information videos
 
-  ```js
-  import {crawling} from 'ryc';
-  const result = await crawling('QIccu1Ge-mc');
-  ```
-
   - crawling(videoid: string)
     - videoID: Youtube video id
 
@@ -62,21 +57,21 @@ npm install ryc"
   - output data is json
     ```
     {
-    videoId: 'QIccuFGe-mc',
-    category: 'Comedy',
-    title: 'this is title',
-    views: 87572,
-    publishDate: '2018-10-12',
-    uploadDate: '2018-10-12',
-    ownerChannelName: 'Real Fish Viewer',
-    channelId: 'UCe323-y0YdvVSCwX3QbQb-A',
-    ad: undefined,
-    duration: 131448,
-    paidOverlay: false,
-    likes: 277,
-    tags: [],
-    rank: undefined,
-    superText: '#인기급상승동영상'
+        videoId: 'QIccuFGe-mc',
+        category: 'Comedy',
+        title: 'this is title',
+        views: 87572,
+        publishDate: '2018-10-12',
+        uploadDate: '2018-10-12',
+        ownerChannelName: 'Real Fish Viewer',
+        channelId: 'UCe323-y0YdvVSCwX3QbQb-A',
+        ad: undefined,
+        duration: 131448,
+        paidOverlay: false,
+        likes: 277,
+        tags: [],
+        rank: undefined,
+        superText: '#인기급상승동영상'
     }
     ```
 
@@ -101,7 +96,7 @@ npm install ryc"
 
 - [RealFishDev Hom](https://realfish-likeview.web.app/")
 
-**RYC LICENSE**
+**RYC(RealFish Youtube Crawling) LICENSE**
 
 - Real Fish ISC
 

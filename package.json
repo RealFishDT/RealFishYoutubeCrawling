@@ -1,6 +1,6 @@
 {
-  "name": "ryc",
-  "version": "0.2.4",
+  "name": "realfish-yc",
+  "version": "0.0.1",
   "description": "Real Fish Youtube Video Crawling Module",
   "main": "libs/bundle.js",
   "types": "libs/bundle.d.ts",
