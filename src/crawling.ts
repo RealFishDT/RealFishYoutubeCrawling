@@ -21,8 +21,12 @@ export class CrawlingError extends Error {
 
 export class VideoCrawler {
   private mvidID: string;
-  constructor(vidID: string) {
+  private gl: string;
+  private hl: string;
+  constructor(vidID: string, gl = 'KO', hl = 'KR') {
     this.mvidID = vidID;
+    this.gl = gl;
+    this.hl = hl;
   }
 
   public getThumnail() {
@@ -32,7 +36,7 @@ export class VideoCrawler {
   private async getHtml() {
     try {
       return await axios.get(
-        `https://www.youtube.com/watch?v=${this.mvidID}&gl=kr&hl=ko`
+        `https://www.youtube.com/watch?v=${this.mvidID}&gl=${this.gl}&hl=${this.hl}`
       );
     } catch (error) {
       return null;

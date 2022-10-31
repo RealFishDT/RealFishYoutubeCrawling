@@ -14,6 +14,9 @@ npm install ryc
 ## **Support features:**
 
 - Get views, likes from youtube video web site
+- region and language support
+  support languages are "KO", "EN", ISO 639-1, CAPITAL CASE
+  support region are ISO 3166-1 alpha-2 that youtube support, CAPITAL CASE
 - this RYC don't use headless browser and selector library like cheerio or scrapy, just use ajax, so fast and light
 - this works on nodejs and electron
   - unfortunately, not support common modern browser because CORS or SOP error
@@ -23,10 +26,19 @@ npm install ryc
 ## **Dependency:**
 
 - axios
+- node js > 16.0.0
 
 ## **RYC APIS**
 
-- Tyscript
+- API
+  - crawling(videoid: string, gl: string, hl: string)
+    - videoid: youtube video id
+    - gl: region(national code) defualt "KR"
+      - on trend(인급동) video ranks list is diffrent by gl
+      - each region have each "on trend videos"
+      - it affect "rank" property
+    - hl: lanugage code default "KO"
+- Typescript
 
   **youtube video crawling** : return information videos
 
@@ -35,16 +47,27 @@ npm install ryc
   const result = await crawling('QIccu1Ge-mc');
   ```
 
+  ```ts
+  import {crawling} from 'realfish-yc';
+  const result = await crawling('QIccu1Ge-mc', 'US', 'EN');
+  ```
+
 - Javascript
 
   ```js
   const A = require('realfish-yc');
-  const test = () => {
-    A.crawling_('wnlh9yoxBek').then(h => {
-      console.log(h);
-    });
-  };
-  test();
+
+  A.crawling_('wnlh9yoxBek').then(h => {
+    console.log(h);
+  });
+  ```
+
+  ```js
+  const A = require('realfish-yc');
+
+  A.crawling_('wnlh9yoxBek', 'US', 'EN').then(h => {
+    console.log(h);
+  });
   ```
 
   **youtube video crawling** : return information videos
@@ -54,7 +77,8 @@ npm install ryc
 
 - Output
 
-  - output data is json
+  - output data is json, gl=KR, hl=KO, korea, korean
+
     ```
     {
         videoId: 'QIccuFGe-mc',
@@ -72,6 +96,27 @@ npm install ryc
         tags: [],
         rank: undefined,
         superText: '#인기급상승동영상'
+    }
+    ```
+
+  - output data is json, gl=SG, hl=EN, singapole, english
+    ```
+    {
+        videoId: 'UhQmAfzaw7c',
+        category: 'Gaming',
+        title: 'Dota 2 The International 2022 - Main Event - Final Day',
+        views: 3407950,
+        publishDate: '2022-10-30',
+        uploadDate: '2022-10-30',
+        ownerChannelName: 'dota2',
+        channelId: 'UCTQKT5QqO3h7y32G8VzuySQ',
+        ad: undefined,
+        duration: 39937973,
+        paidOverlay: false,
+        likes: 23100,
+        tags: [ 'Dota 2', 'Gaming' ],
+        rank: 1,
+        superText: '#1 ON TRENDING'
     }
     ```
 

@@ -3,10 +3,10 @@ import 'jasmine';
 import {crawling} from '../src/main';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 26000;
-describe('crawling comment test 10', () => {
-  it('crawling comments 10', async () => {
-    const result = await crawling('QIccuFGe-mc');
+describe('crawling test', () => {
+  it('crawling video', async () => {
+    const result = await crawling('UhQmAfzaw7c');
     console.log(result);
-    expect(result.videoId).toEqual('QIccuFGe-mc');
+    expect(result.videoId).toEqual('UhQmAfzaw7c');
   });
 });
