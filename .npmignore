@@ -1,0 +1,10 @@
+dist
+src
+test
+webpack-config
+.eslintignore
+.gitignore
+.prettierrc.js
+package-lock.json
+tsconfig.json
+jasmine.json
