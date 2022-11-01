@@ -8,7 +8,7 @@ Real Fish Youtube Crawling
 ## **Install**
 
 ```
-npm install ryc
+npm i realfish-yc
 ```
 
 ## **Support features:**
