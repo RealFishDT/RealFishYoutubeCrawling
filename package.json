@@ -1,6 +1,6 @@
 {
   "name": "realfish-yc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Real Fish Youtube Video Crawling Module",
   "main": "libs/bundle.js",
   "types": "libs/bundle.d.ts",
@@ -28,7 +28,7 @@
   ],
   "author": {
     "name": "Realfish",
-    "email": "contentdevsolution@gmail.com",
+    "email": "realfishdt@gmail.com",
     "url": "https://realfish-likeview.web.app/"
   },
   "engines": {
