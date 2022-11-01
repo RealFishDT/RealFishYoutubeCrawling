@@ -139,7 +139,7 @@ npm install ryc
 
 **Product**
 
-- [RealFishDev Hom](https://realfish-likeview.web.app/")
+- [RealFishDev Hom](https://realfish-likeview.web.app)
 
 **RYC(RealFish Youtube Crawling) LICENSE**
 
