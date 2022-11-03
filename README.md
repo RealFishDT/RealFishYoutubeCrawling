@@ -37,7 +37,8 @@ npm i realfish-yc
       - on trend(인급동) video ranks list is diffrent by gl
       - each region have each "on trend videos"
       - it affect "rank" property
-    - hl: lanugage code default "KO"
+    - hl: lanugage code default "KO", it's only support "KO", "EN"
+      - if you use other language code, this module can not extract video list from youtube
 - Typescript
 
   **youtube video crawling** : return information videos
