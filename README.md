@@ -58,7 +58,7 @@ npm i realfish-yc
   ```js
   const A = require('realfish-yc');
 
-  A.crawling_('wnlh9yoxBek').then(h => {
+  A.crawling('wnlh9yoxBek').then(h => {
     console.log(h);
   });
   ```
@@ -66,7 +66,7 @@ npm i realfish-yc
   ```js
   const A = require('realfish-yc');
 
-  A.crawling_('wnlh9yoxBek', 'US', 'EN').then(h => {
+  A.crawling('wnlh9yoxBek', 'US', 'EN').then(h => {
     console.log(h);
   });
   ```
