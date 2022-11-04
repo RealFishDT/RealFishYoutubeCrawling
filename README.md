@@ -142,7 +142,7 @@ npm i realfish-yc
 
 - [RealFishDev Hom](https://realfish-likeview.web.app)
 
-- [Chrome Extension, Realfish View Like](https://chrome.google.com/webstore/detail/youtube-real-fish-view-li/eeeailknbdnnjbceiioeimophdjcjkaf/related?authuser=1?authuser=1&gclid=CjwKCAjwh4ObBhAzEiwAHzZYU3W9Hy0HySCDOg_lae3yCiLU-bBSl6a5Vz_YTloxBYbqY67srZ4jBhoCOEwQAvD_BwE)
+- [Chrome Extension, Realfish View Like](https://chrome.google.com/webstore/search/realfish%20view%20like?authuser=1?authuser=1&gclid=CjwKCAjwzY2bBhB6EiwAPpUpZmzaXPt4vGxm3A_ubGvCZYhmwjFjcNb9k8tyakGaGNWUa5c_TJWfLBoC_c0QAvD_BwE)
 
   **RYC(RealFish Youtube Crawling) LICENSE**
 
