@@ -154,12 +154,19 @@ export class VideoCrawler {
       let superText: string;
       if (videoPrimaryInfo.superTitleLink) {
         superText = videoPrimaryInfo.superTitleLink.runs[0].text;
+        const numberPattern = /#\d+/g;
 
         if (superText.includes('인기 급상승 동영상 ')) {
-          onTrend = Number(superText.replace('인기 급상승 동영상 #', ''));
+          const onTrends = superText.match(numberPattern)
+          onTrend = Number(onTrends[0].replace('#'))
+          //onTrend = Number(superText.replace('인기 급상승 동영상 #', ''));
         }
         if (superText.includes(' ON TRENDING')) {
           const temp = superText.replace('ON TRENDING', '');
+          onTrend = Number(temp.replace('#', ''));
+        }
+        if (superText.includes('en Tendencias')) {
+          const temp = superText.replace('en Tendencias', '');
           onTrend = Number(temp.replace('#', ''));
         }
       }
