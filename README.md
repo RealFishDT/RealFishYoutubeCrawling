@@ -23,6 +23,13 @@ npm i realfish-yc
 - Typescript support
 - async/await support
 
+##FIX
+- 0.1.8: in case of English Crawling, Module can not extract rank from on trend super text tag
+- 0.1.8: in case of music category video, Module can not extract rank from on trend suport text tag
+
+##ADD
+- 0.1.8 support ES language
+
 ## **Dependency:**
 
 - axios
@@ -37,7 +44,7 @@ npm i realfish-yc
       - on trend(인급동) video ranks list is diffrent by gl
       - each region have each "on trend videos"
       - it affect "rank" property
-    - hl: lanugage code default "KO", it's only support "KO", "EN"
+    - hl: lanugage code default "KO", it's only support "KO", "EN", "ES"
       - if you use other language code, this module can not extract video list from youtube
 - Typescript
 
