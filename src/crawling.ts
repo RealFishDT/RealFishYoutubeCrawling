@@ -154,13 +154,19 @@ export class VideoCrawler {
       let superText: string;
       if (videoPrimaryInfo.superTitleLink) {
         superText = videoPrimaryInfo.superTitleLink.runs[0].text;
+        const numberPattern = /#\d+/g;
 
-        if (superText.includes('인기 급상승 동영상 ')) {
-          onTrend = Number(superText.replace('인기 급상승 동영상 #', ''));
+        if (superText.includes('인기 급상승') && superText.match(numberPattern)) {
+          const onTrends = superText.match(numberPattern)
+          onTrend = Number(onTrends[0].replace('#', ''))
         }
-        if (superText.includes(' ON TRENDING')) {
-          const temp = superText.replace('ON TRENDING', '');
-          onTrend = Number(temp.replace('#', ''));
+        if (superText.toUpperCase().includes(' ON TRENDING') && superText.match(numberPattern)) {
+          const onTrends = superText.match(numberPattern)
+          onTrend = Number(onTrends[0].replace('#', ''))
+        }
+        if (superText.toLocaleLowerCase().includes('en tendencias') && superText.match(numberPattern)) {
+          const onTrends = superText.match(numberPattern)
+          onTrend = Number(onTrends[0].replace('#', ''))
         }
       }
       let likeCount = -1;
@@ -209,7 +215,6 @@ export class VideoCrawler {
         superText: superText,
       };
     } catch (e) {
-      console.log(e);
       throw new CrawlingError(CrawlingErrorCode.InitalData);
     }
   }
